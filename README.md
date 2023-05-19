@@ -5,8 +5,11 @@ SMART MANAGEMENT SYSTEM FOR BUS SERVICES
 Project Group - GRP_22
 
 Group Leader - IT20607814 -Ms.Tavinya W.D.Githmi
+
 Member 2 - IT20639808 - Ms.G.Sithara.K.D.Z.Wickramasinghe 
+
 Member 3 - IT20619244 - Ms.Madurasinghe M.A.Chalani.A 
+
 Member 4 - IT20263980 - Ms.Gunawardhane Ovara.W 
 
 Brief Description of your Solution -
