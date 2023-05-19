@@ -16,7 +16,7 @@ export default class Navbar extends Component {
             
             <
             Link to = "/Report" >
-            <button class="btn btn-success my-4 my-sm-0" type="submi" style={{background:"#fcff18",color:"#000"}}>Report</button></Link>
+            <button class="btn btn-success my-4 my-sm-0" type="submit" style={{background:"#fcff18",color:"#000"}}>Report</button></Link>
             </ul >
             </form>
             </div > </nav>
