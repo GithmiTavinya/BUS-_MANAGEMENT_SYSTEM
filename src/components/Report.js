@@ -48,6 +48,122 @@ export default class EmployeeList extends Component {
     }
 
     
+
+
+    deleteEmployee(id) {
+        if (window.confirm('Are you sure?')) {
+            axios.delete('http://localhost:5000/Employee/' + id)
+                .then(response => { console.log(response.data) });
+
+            this.setState({
+                Employee: this.state.Employee.filter(el => el._id !== id)
+            })
+        }
+    }
+
+    EmployeeList() {
+        return this.state.Employee.map(currentEmployee => {
+            return <Employee Employee = { currentEmployee }
+            deleteEmployee = { this.deleteEmployee }
+            key = { currentEmployee._id }
+            />;
+        })
+    }
+
+    filterData(Employee, searchKey) {
+
+        this.setState({
+            Employee: this.state.Employee.filter(el => el.EmployeeName = searchKey)
+        })
+
+    }
+
+    handleSearchArea = (e) => {
+
+        const searchKey = e.currentTarget.value;
+
+        axios.get('http://localhost:5000/Employee/').then(response => {
+
+            const resultt = response.data
+            const result = resultt.filter((props) =>
+                props.EmployeeName.includes(searchKey)
+            )
+
+            this.setState({ Employee: result })
+
+        });
+
+    }
+    Report (){ window.print();}
+
+    render() {
+        return ( <
+            div className = "container" >
+    
+            <div style = {
+                { float: 'none'}
+            } > 
+           
+            </div>  <br/>
+            
+            <
+            div className = "row" >
+            <
+            div className = "col-lg-9 mt-2 mb-2" >
+            <
+            h4 > Employee Report </h4> </
+            div > </
+            div>
+
+            <
+            table class="table table-bordered bg-light" >
+            <
+            thead className = "thead-dark align-middle" >
+            <
+            tr >
+            <
+            th className='align-middle'> Employee ID </th> <
+            th className='align-middle'> Employee Name </th> <
+            th className='align-middle'> Employee Street Address </th> <
+            th className='align-middle'> Postal Code </th> <
+            th className='align-middle'> E mail </th> <
+            th className='align-middle'> Brief Type of Employee </th> <
+            th className='align-middle'> Supply Discription And goods </th> </
+            tr > </
+            thead> <
+            tbody >
+            
+             {
+                this.state.Employee.map(props =>
+                    <
+                    tr key = { props.EmployeeID } >
+                    
+                    <td > { props.EmployeeID } </td>  <
+                    td > { props.EmployeeName } </td>  <
+                    td > { props.Address } </td>  <
+                    td > { props.Telephone } </td>  < 
+                    td > { props.Email } </td>  <  
+                    td > { props.Type } </td>  < 
+                    td > { props.Discription } </td>  
+                    
+
+                    </tr>
+                )
+
+            }
+
+            </tbody> </table >
+
+            <div className = "container" >
+           
+            
+            {/*<input type = "Button"
+            onClick = { this.Report }
+            value = "Print This Report"
+        className = "btn btn-danger"/>*/}
+        </div>
+
+            </div>
         )
     }
 }
