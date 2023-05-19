@@ -28,7 +28,26 @@ export default class EmployeeList extends Component {
         };
     }
 
-    
+    componentDidMount() {
+        axios.get('http://localhost:5000/Employee/')
+            .then(response => {
+                this.setState({ Employee: response.data })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    getPosts() {
+        axios.get('http://localhost:5000/Employee/')
+            .then(response => {
+                this.setState({ Employee: response.data })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
 
     render() {
         return ( <
