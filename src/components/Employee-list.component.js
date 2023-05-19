@@ -48,6 +48,27 @@ export default class EmployeeList extends Component {
             })
     }
 
+    deleteEmployee(id) {
+        if (window.confirm('Are you sure you want to delete this employee?')) {
+            axios.delete('http://localhost:5000/Employee/' + id)
+                .then(response => { console.log(response.data) });
+
+            this.setState({
+                Employee: this.state.Employee.filter(el => el._id !== id)
+            })
+        }
+    }
+
+    EmployeeList() {
+        return this.state.Employee.map(currentEmployee => {
+            return <Employee Employee = { currentEmployee }
+            deleteEmployee = { this.deleteEmployee }
+            key = { currentEmployee._id }
+            />;
+        })
+    }
+
+    
 
     render() {
         return ( <
