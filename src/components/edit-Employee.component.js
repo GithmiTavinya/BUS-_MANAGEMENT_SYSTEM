@@ -58,7 +58,78 @@ export default class EditEmployee extends Component {
 
     }
 
+    //set the EmployeeID 
+    onChangeEmployeeID(e) {
+        this.setState({
+            EmployeeID: e.target.value
+        })
+    }
+
+    //set the Address
+    onChangeAddress(e) {
+        this.setState({
+            Address: e.target.value
+        })
+    }
+
+    //set EmployeeName
+    onChangeEmployeeName(e) {
+        this.setState({
+            EmployeeName: e.target.value
+        })
+    }
+
    
+
+    //set Telephone
+    onChangeTelephone(e) {
+        this.setState({
+            Telephone: e.target.value
+        })
+    }
+
+    //Set Email
+    onChangeEmail(e) {
+        this.setState({
+            Email: e.target.value
+        })
+    }
+
+     //set Type
+     onChangeType(e) {
+        this.setState({
+            Type: e.target.value
+        })
+    }
+
+    //Set Discription
+    onChangeDiscription(e) {
+        this.setState({
+            Discription: e.target.value
+        })
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+
+        const Employee = {
+            EmployeeID: this.state.EmployeeID,
+            EmployeeName: this.state.EmployeeName,
+            Address: this.state.Address,
+            Telephone: this.state.Telephone,
+            Email: this.state.Email,
+            Type: this.state.Type,
+            Discription: this.state.Discription
+
+        }
+
+        console.log(Employee);
+
+        axios.post('http://localhost:5000/Employee/update/' + this.props.match.params.id, Employee)
+            .then(res => console.log(res.data));
+        alert("Update Successfully")
+        window.location = '/';
+    }
 
     render() {
         return ( <div >
