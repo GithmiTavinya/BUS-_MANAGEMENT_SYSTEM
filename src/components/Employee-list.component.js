@@ -70,6 +70,31 @@ export default class EmployeeList extends Component {
 
     
 
+    filterData(Employee, searchKey) {
+
+        this.setState({
+            Employee: this.state.Employee.filter(el => el.EmployeeName = searchKey)
+        })
+
+    }
+
+    handleSearchArea = (e) => {
+
+        const searchKey = e.currentTarget.value;
+
+        axios.get('http://localhost:5000/Employee/').then(response => {
+
+            const resultt = response.data
+            const result = resultt.filter((props) =>
+                props.EmployeeName.includes(searchKey)
+            )
+
+            this.setState({ Employee: result })
+
+        });
+
+    }
+
     render() {
         return ( <
             div className = "container" >
