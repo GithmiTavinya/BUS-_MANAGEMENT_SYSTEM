@@ -18,7 +18,36 @@ const Employee = props => ( <
     Link to = { "/edit/" + props.Employee._id } > Edit </Link> | <a href=" " onClick={() => { props.deleteEmployee(props.Employee._id) }}>Delete</a > </
     td > </tr> 
 )
+export default class EmployeeList extends Component {
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            Employee: []
+        };
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/Employee/')
+            .then(response => {
+                this.setState({ Employee: response.data })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    getPosts() {
+        axios.get('http://localhost:5000/Employee/')
+            .then(response => {
+                this.setState({ Employee: response.data })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    
         )
     }
 }
