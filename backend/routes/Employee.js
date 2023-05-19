@@ -7,7 +7,34 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+//Add Function
 
+router.route('/add').post((req, res) => {
+
+    const EmployeeID = req.body.EmployeeID;
+    const EmployeeName = req.body.EmployeeName;
+    const Address =req.body.Address;
+    const Email = req.body.Email;
+    const Telephone = req.body.Telephone;
+    const Type = req.body.Type;
+    const Discription = req.body.Discription;
+   
+
+    const newEmployee  = new Employee({
+        EmployeeID,
+        EmployeeName,
+        Address,
+        Email,
+        Telephone,
+        Type,
+        Discription
+       
+    });
+
+    newEmployee.save()
+        .then(() => res.json('Employee  added!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 
 // Get Data 
 router.route('/:id').get((req, res) => {
